@@ -3,11 +3,12 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) {
         map<int,int> m;
         for(int i=0;i<nums.size();i++){
-            int r = target - nums[i];
-            if(m.find(r) != m.end()){
-                return {m[r],i};
+            int num = nums[i];
+            int a = target - num;
+            if(m.find(a) != m.end()){
+                return {m[a],i};
             }
-            m[nums[i]] = i;
+            m[num] = i;
         }
         return {-1,-1};
     }

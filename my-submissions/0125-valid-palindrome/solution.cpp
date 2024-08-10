@@ -1,22 +1,21 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        if(s.size()!=0){
-            string word;
-            for(int i=0;i<s.length();i++){
-                if((s[i]>='a' && s[i]<='z') || (s[i]>='A' && s[i]<='Z') || (s[i]>='0' && s[i]<='9')){
-                    word += tolower(s[i]);
-                }
+        int i = 0, j = s.size() - 1;
+
+        while (i < j) {
+            // Bỏ qua các ký tự không phải chữ cái hoặc số
+            while (i < j && !isalnum(s[i])) i++;
+            while (i < j && !isalnum(s[j])) j--;
+
+            // So sánh ký tự tại i và j, không phân biệt hoa thường
+            if (tolower(s[i]) != tolower(s[j])) {
+                return false;
             }
-            string word2;
-            for(int i = word.length()-1;i>=0;i--){
-                word2 += word[i];
-            }
-            if(word == word2){
-                return true;
-            }
-            else return false;
+
+            i++;
+            j--;
         }
-        else return true;   
+        return true;
     }
 };

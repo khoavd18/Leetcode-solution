@@ -1,15 +1,14 @@
 class Solution {
 public:
-    int removeElement(std::vector<int>& nums, int val) {
-        std::vector<int>::iterator it = nums.begin();
-
-        while (it != nums.end()) {
-            if (*it == val) {
-                it = nums.erase(it);
-            } else {
-                ++it;
+    int removeElement(vector<int>& nums, int val) {
+        int i=0;int n=nums.size();
+        while(i<n){
+            if(nums[i]==val){
+                nums[i] = nums[n-1];
+                n--;
             }
+            else i++;
         }
-        return nums.size();
+        return n;
     }
 };

@@ -4,10 +4,16 @@
 class Solution {
 public:
     int removeDuplicates(std::vector<int>& nums) {
-        std::set<int> uniqueSet(nums.begin(), nums.end());
-        nums.assign(uniqueSet.begin(), uniqueSet.end());
-
-        return nums.size();
+        int n = nums.size();
+        if(nums.empty()) return 0;
+        int j = 1;
+        for(int i=1;i<n;i++){
+            if(nums[i] != nums[i-1]){
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+        return j;
     }
 };
 
